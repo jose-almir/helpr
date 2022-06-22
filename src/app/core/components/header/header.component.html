@@ -18,7 +18,7 @@
         <mat-icon>{{ item.icon }}</mat-icon>
         <span class="menu-label">{{ item.label }}</span>
       </a>
-      <a mat-list-item>
+      <a mat-list-item (click)="logout()">
         <mat-icon>logout</mat-icon>
         <span class="menu-label">Sair</span>
       </a>
