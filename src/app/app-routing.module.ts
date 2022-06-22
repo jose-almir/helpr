@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/guards/auth/auth.guard';
 import { HeaderComponent } from './core/components/header/header.component';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: HeaderComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       {
