@@ -1,1 +1,87 @@
-<p>cliente-create works!</p>
+<div class="form-wrapper">
+    <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+      <h2>Novo cliente</h2>
+      <section formArrayName="perfils" class="section">
+        <mat-checkbox class="margin" color="primary" formControlName="0"
+          >Admin</mat-checkbox
+        >
+        <mat-checkbox class="margin" color="primary" formControlName="1"
+          >Cliente</mat-checkbox
+        >
+        <mat-checkbox class="margin" color="primary" formControlName="2"
+          >Tecnico</mat-checkbox
+        >
+      </section>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          placeholder="Nome do cliente"
+          formControlName="nome"
+          required
+        />
+        <mat-error *ngIf="clienteForm.get('nome')?.errors?.['required']"
+          >Campo obrigatório</mat-error
+        >
+        <mat-icon matPrefix>person</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input
+          matInput
+          mask="000.000.000-00"
+          [dropSpecialCharacters]="false"
+          placeholder="CPF do cliente"
+          formControlName="cpf"
+          required
+        />
+        <mat-error *ngIf="clienteForm.get('cpf')?.errors?.['required']"
+          >Campo obrigatório</mat-error
+        >
+        <mat-error *ngIf="clienteForm.get('cpf')?.errors?.['mask']"
+          >Formato de CPF inválido</mat-error
+        >
+        <mat-icon matPrefix>credit_card</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Email do cliente"
+          formControlName="email"
+          type="email"
+          required
+        />
+        <mat-error *ngIf="clienteForm.get('email')?.errors?.['required']"
+          >Campo obrigatório</mat-error
+        >
+        <mat-icon matPrefix>email</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          placeholder="Senha do cliente"
+          formControlName="senha"
+          type="password"
+          required
+        />
+        <mat-error *ngIf="clienteForm.get('senha')?.errors?.['required']"
+          >Campo obrigatório</mat-error
+        >
+        <mat-error *ngIf="clienteForm.get('senha')?.errors?.['minlength']"
+          >O mínimo são 8 caracteres</mat-error
+        >
+        <mat-icon matPrefix>key</mat-icon>
+      </mat-form-field>
+      <span
+        class="mat-error"
+        *ngIf="clienteForm.get('perfils')?.errors?.['sometrue']"
+      >
+        Marque pelo menos uma função para o user
+      </span>
+      <button mat-raised-button color="primary" [disabled]="clienteForm.invalid">
+        Criar
+      </button>
+    </form>
+  </div>

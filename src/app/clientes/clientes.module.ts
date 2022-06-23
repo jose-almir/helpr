@@ -7,7 +7,7 @@ import { MaterialModule } from '../shared/material.module';
 import { ClienteUpdateComponent } from './components/cliente-update/cliente-update.component';
 import { ClienteCreateComponent } from './components/cliente-create/cliente-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ClientesRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
+  ],
 })
-export class ClientesModule { }
+export class ClientesModule {}
