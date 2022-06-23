@@ -4,7 +4,7 @@ export interface Pessoa {
   cpf: string;
   email: string;
   senha: string;
-  perfis: Perfil[] | string[];
+  perfils: Perfil[] | string[];
   dataCriacao: string;
 }
 
