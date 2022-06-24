@@ -9,6 +9,8 @@ import { API_CONFIG } from 'src/app/config/api.config';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  emailUser?: string;
+
   login(email: string, senha: string) {
     const creds = { email, senha };
     return this.http.post(`${API_CONFIG.baseUrl.prod}/login`, creds, {
@@ -23,6 +25,8 @@ export class AuthService {
     let token = localStorage.getItem('token');
 
     if (token !== null) {
+      const decoded = this.jwt.decodeToken(token);
+      this.emailUser = decoded.sub;
       return !this.jwt.isTokenExpired(token);
     }
 
