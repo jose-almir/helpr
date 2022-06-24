@@ -8,6 +8,7 @@ import { ChamadoCreateComponent } from './components/chamado-create/chamado-crea
 import { ChamadoUpdateComponent } from './components/chamado-update/chamado-update.component';
 import { ChamadoDetailComponent } from './components/chamado-detail/chamado-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ChamadosRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class ChamadosModule { }
