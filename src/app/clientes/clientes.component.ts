@@ -34,6 +34,7 @@ export class ClientesComponent implements OnInit {
 
       this.clientesService.delete(id).subscribe({
         next: () => {
+          this.clientes$ = this.clientesService.findAll();
           this.toast.success('Usuário deletado');
           ref.close();
         },
