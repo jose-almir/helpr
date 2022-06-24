@@ -7,6 +7,8 @@ import { MaterialModule } from '../shared/material.module';
 import { TecnicoUpdateComponent } from './components/tecnico-update/tecnico-update.component';
 import { TecnicoCreateComponent } from './components/tecnico-create/tecnico-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TecnicosRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
+    SharedModule,
+    NgxMaskModule.forRoot()
   ],
 })
 export class TecnicosModule {}
