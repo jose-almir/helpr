@@ -1,1 +1,29 @@
-<p>chamado-detail works!</p>
+<div *ngIf="!loading && !error; else loadingOrError">
+  <mat-card class="example-card">
+    <mat-card-title>#{{ chamado.id }} {{ chamado.titulo }}</mat-card-title>
+    <mat-card-subtitle>
+      {{ chamado.nomeCliente }} | {{ chamado.dataAbertura }}
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p><b>Observações:</b> {{ chamado.observacoes }}</p>
+      <p><b>Técnico:</b> {{ chamado.nomeTecnico }}</p>
+      <p *ngIf="chamado.dataFechamento">
+        <b>Fechou em:</b> {{ chamado.dataFechamento }}
+      </p>
+      <p>
+        <b>Prioridade:</b>
+        <app-prioridade-chip [prioridade]="chamado.prioridade">
+        </app-prioridade-chip>
+      </p>
+      <p>
+        <b>Status:</b>
+        <app-status-chip [status]="chamado.status"></app-status-chip>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #loadingOrError>
+  <app-loader *ngIf="loading" label="Carregando chamado..."> </app-loader>
+  <p *ngIf="error">{{ errorMsg }}</p>
+</ng-template>
