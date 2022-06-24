@@ -30,6 +30,10 @@ export class HeaderComponent {
     private router: Router
   ) {}
 
+  get emailUser() {
+    return this.authService.emailUser;
+  }
+
   logout() {
     this.authService.onLogout();
     this.router.navigate(['/auth']);
